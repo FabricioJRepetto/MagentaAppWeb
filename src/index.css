@@ -75,5 +75,12 @@
 }
 
 @layer components {
+    .login-container {
+        color-scheme: light;
+    }
+    .login-container > div {
+        display: flex;
+        justify-content: center;
+    }
     
 }
