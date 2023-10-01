@@ -1,8 +1,14 @@
+import { useContext } from "react";
 import magentaLogo from "../../assets/icons/logo.png";
 import { Outlet, useNavigate } from 'react-router-dom';
+import { GlobalContext } from "../../infra/context/GlobalContext";
+import { GlobalContextType } from "../../types/context/context";
+import userIcon from "../../assets/icons/user.svg";
 
 const NavBar = () => {
     const navigate = useNavigate()
+    const { isLogged, user } = useContext(GlobalContext) as GlobalContextType;
+
 
     return (
         <>
@@ -13,10 +19,16 @@ const NavBar = () => {
                         <img src={magentaLogo} alt="megenta logo" className="h-12 cursor-pointer" />
                     </div>
 
-                    <div className='h-fit flex gap-4 px-5'>
-                        <p onClick={() => navigate('/app/user')} className="cursor-pointer">usuario</p>
-                        <p onClick={() => navigate('/login')} className="cursor-pointer">login</p>
-                        <p onClick={() => navigate('/app')} className="cursor-pointer">menu</p>
+                    <div className='h-fit flex gap-4 px-6'>
+                        {!isLogged && <p onClick={() => navigate('/login')} className="cursor-pointer">login</p>}
+                        {isLogged && <>
+                            <span onClick={() => navigate('/app/user')} className="flex gap-2 cursor-pointer">
+                                <img src={user?.picture || userIcon} alt="profile picture" className="h-8 w-8 rounded-full" style={{ border: "2px solid var(--magenta)" }} />
+                                <p>{user?.name.split(" ")[0] || 'Perfil'}</p>
+                            </span>
+                            <p onClick={() => navigate('/app')} className="cursor-pointer">Dashboard</p>
+                        </>}
+
                     </div>
                 </div>
 

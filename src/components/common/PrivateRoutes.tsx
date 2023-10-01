@@ -1,13 +1,13 @@
+import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { GlobalContextType } from "../../types/context/context";
+import { GlobalContext } from "../../infra/context/GlobalContext";
 
 const PrivateRoutes = () => {
-    //TODO tomar usuario del context 
-    const user = {
-        id: true
-    }
+    const { isLogged } = useContext(GlobalContext) as GlobalContextType;
 
     return (
-        user?.id ? <Outlet /> : <Navigate to='/login' />
+        isLogged ? <Outlet /> : <Navigate to='/login' />
     )
 };
 

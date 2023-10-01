@@ -1,14 +1,13 @@
 export interface GlobalContextType {
     user: User | null;
-    account: Account | null;
     config: Config | null;
     logs: Logs | null;
     filteredLogs: Logs | null;
     usersList: User[] | null;
-    isLoading: boolean
+    isLoading: boolean;
+    isLogged: boolean;
 
     saveUser: (user_data: User) => void,
-    saveAccount: (account_data: Account) => void,
     saveConfig: (config_data: Config) => void,
     saveLogs: (logs_data: Logs) => void,
     saveFilteredLogs: (filtered_list: Logs) => void,
@@ -20,32 +19,52 @@ export interface GlobalContextType {
 export interface User {
     email: string
     name: string
-    role: string
     picture: string | undefined
-    _id: string
-}
-
-export interface Account {
-    email: string
-    name: string
     role: string
-    picture: string | undefined
     _id: string
+    google_id: string;
+    slack_id?: string;
 }
 
 export interface Config {
-    email: string
-    name: string
-    role: string
-    picture: string | undefined
-    _id: string
+    id: string;
+    active_hours: {
+        from: number,
+        to: number
+    };
+    active_days: number[];
+    notification: boolean;
+    reminder_time: number;
 }
 
 export interface Logs {
-    email: string
-    name: string
-    role: string
-    picture: string | undefined
-    _id: string
+    id: string;
+    user: string;
+    entries: Entry[]
+}
+
+export interface Entry {
+    month: number;
+    year: number;
+    days: Day[];
+}
+
+export interface Day {
+    date: string;
+    activity: Activity[]
+}
+
+export interface Activity {
+    date: string;
+    hours: {
+        from: number;
+        to: number;
+    };
+    description: string;
+    category: CATEGORY,
+    subcategory: SUBCATEGORY,
+    energy: number,
+    emotion: EMOTION,
+    gc_event_id?: string
 }
 

@@ -1,5 +1,5 @@
 import { FC, createContext, ReactNode, useState } from 'react'
-import { GlobalContextType, Account, Config, Logs, User } from '../../types/context/context';
+import { GlobalContextType, Config, Logs, User } from '../../types/context/context';
 
 interface Props {
     children: ReactNode;
@@ -10,13 +10,13 @@ export const GlobalContext = createContext<GlobalContextType | null>(null);
 const ContextProvider: FC<Props> = ({ children }) => {
 
     const [user, setUser] = useState<User | null>(null)
-    const [account, setAccount] = useState<Account | null>(null)
     const [config, setConfig] = useState<Config | null>(null)
     const [logs, setLogs] = useState<Logs | null>(null)
     const [filteredLogs, setFilteredLogs] = useState<Logs | null>(null)
     const [usersList, setUsersList] = useState<User[] | null>(null)
 
-    const [isLoading, setLoading] = useState<boolean>(true)
+    const [isLogged, setLogged] = useState<boolean>(false)
+    const [isLoading, setLoading] = useState<boolean>(false)
 
     /**
      * Guardar datos del usuario (info)
@@ -24,14 +24,7 @@ const ContextProvider: FC<Props> = ({ children }) => {
      */
     const saveUser = (user_data: User): void => {
         setUser(user_data)
-    }
-
-    /**
-     * Guardar datos de cuenta (info extra, teléfono, slack_id, etc.)
-     * @param account_data 
-     */
-    const saveAccount = (account_data: Account): void => {
-        setAccount(account_data)
+        setLogged(true)
     }
 
     /**
@@ -66,26 +59,25 @@ const ContextProvider: FC<Props> = ({ children }) => {
      */
     const logout = (): void => {
         setUser(null)
-        setAccount(null)
         setConfig(null)
         setLogs(null)
         setFilteredLogs(null)
         setUsersList(null)
         setLoading(false)
+        setLogged(false)
     }
 
     return (
         <GlobalContext.Provider value={{
             user,
-            account,
             config,
             logs,
             filteredLogs,
             usersList,
             isLoading,
+            isLogged,
 
             saveUser,
-            saveAccount,
             saveConfig,
             saveLogs,
             saveFilteredLogs,

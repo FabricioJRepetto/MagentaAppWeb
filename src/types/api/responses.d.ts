@@ -15,8 +15,8 @@ export interface populatedUserResponse {
 
 export interface PopulatedUser {
     name: string;
-    config: IConfig | Types.ObjectId;
-    logs: ILogs | Types.ObjectId;
+    config: Config;
+    logs: Logs;
     username?: string;
     phone?: string;
     email: string;
