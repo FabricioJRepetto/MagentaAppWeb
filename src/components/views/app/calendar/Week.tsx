@@ -5,6 +5,8 @@ import DayColumn from './DayColumn'
 import { defineWeek } from "../../../../utils/defineWeek";
 import { weekDayDate } from "../../../../utils/weekDayDate";
 import findDayLogs from "../../../../utils/findDayLogs";
+import timeToHeight from "../../../../utils/timeToHeight";
+import timeToNumber from "../../../../utils/timeToNumber";
 
 
 const Week = ({ date }: { date: string }) => {
@@ -55,6 +57,11 @@ const Week = ({ date }: { date: string }) => {
         return days
     }
 
+    const now = new Date().toLocaleString().split(' ')[1]
+    const style = {
+        top: timeToHeight(timeToNumber(now))
+    }
+
     return (
         <>
             <div className='week-container-days'>
@@ -63,6 +70,7 @@ const Week = ({ date }: { date: string }) => {
 
             <div className='week-container'>
                 <div className='week-hours-column'>
+                    <div className='now-dial -z-20' style={style}></div>
                     {hours().map((hour, i) => <span key={'' + hour + i}>{i > 0 ? hour : ''}</span>)}
                 </div>
                 {logs?.entries && getLogs().map((log, i) => <DayColumn key={'day' + i} logs={log} />)}

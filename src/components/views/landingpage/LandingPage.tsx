@@ -18,11 +18,17 @@ const LandingPage = () => {
     }
     const testNotification2 = (): void => {
         const options: ToastOptions = {
-            timeout: 0,
             type: 'dark'
         }
 
         createToast('Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nostrum dolore architecto? Mollitia explicabo qui veritatis in expedita ipsam laborum, odit perferendis incidunt animi rem consequuntur, dolores soluta adipisci assumenda!', options)
+    }
+    const testNotification3 = (): void => {
+        const options: ToastOptions = {
+            type: 'error',
+            cancel: 'OK'
+        }
+        createToast('Lorem ipsum dolor sit amet consectetur adipisicing elit!', options)
     }
 
     return (
@@ -42,6 +48,7 @@ const LandingPage = () => {
             <div className='flex gap-2 justify-center'>
                 <button onClick={testNotification1}> toast 1 </button>
                 <button onClick={testNotification2}> toast 2 </button>
+                <button onClick={testNotification3}> toast error </button>
                 <button onClick={destroyAllToasts}> clear toasts </button>
             </div>
         </>

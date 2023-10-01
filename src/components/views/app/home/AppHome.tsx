@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
-const Home = () => {
+const AppHome = () => {
     const navigate = useNavigate()
 
     return (
         <>
-            <h1>User Home View</h1>
+            <h1>User App Home View</h1>
 
             <p className="read-the-docs">
                 Datos rapidos? Guias? Concejos?
@@ -23,4 +23,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default AppHome

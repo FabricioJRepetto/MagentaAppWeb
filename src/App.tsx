@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/navbar/NavBar';
-import Home from './components/views/home/Home';
+import Home from './components/views/app/home/AppHome';
 import PrivateRoutes from './components/common/PrivateRoutes';
 import LoginScreen from './components/views/login/LoginScreen';
-import Calendar from './components/views/user/calendar/Calendar';
-import Profile from './components/views/user/profile/Profile';
-import Charts from './components/views/user/charts/Charts';
+import Calendar from './components/views/app/calendar/Calendar';
+import Profile from './components/views/app/profile/Profile';
+import Charts from './components/views/app/charts/Charts';
 import LandingPage from './components/views/landingpage/LandingPage';
 import NotFound from './components/common/NotFound';
 import './App.css'

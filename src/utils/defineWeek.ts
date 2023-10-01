@@ -30,5 +30,3 @@ export const defineWeek = (d: string): weekDates => {
         end
     }
 }
-
-console.log(defineWeek('9/30/2023'));

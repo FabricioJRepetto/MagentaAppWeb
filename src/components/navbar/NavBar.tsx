@@ -16,7 +16,7 @@ const NavBar = () => {
 
                 <div className='flex justify-between items-center w-full'>
                     <div onClick={() => navigate('/')} className='px-5'>
-                        <img src={magentaLogo} alt="megenta logo" className="h-12 cursor-pointer" />
+                        <img src={magentaLogo} alt="megenta logo" className="h-12 cursor-pointer navbar-logo" />
                     </div>
 
                     <div className='h-fit flex gap-4 px-6'>

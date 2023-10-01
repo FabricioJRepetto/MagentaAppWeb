@@ -1,33 +1,36 @@
 import { useContext } from 'react'
 import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { GlobalContext } from '../../../infra/context/GlobalContext';
-import { GlobalContextType } from '../../../types/context/context';
+import { GlobalContextType, User } from '../../../types/context/context';
 import { signin } from '../../../infra/microservices/app-api';
 import { setCookie } from '../../../utils/cookies';
 import { createToast } from 'vercel-toast';
 import { useNavigate } from 'react-router-dom';
+import { loginResponse } from '../../../types/api/responses';
 
 const LoginScreen = () => {
     const navigate = useNavigate();
-    const { saveUser, isLoading, changeLoading } = useContext(GlobalContext) as GlobalContextType;
+    const { saveUser, saveConfig, saveLogs, isLoading, changeLoading } = useContext(GlobalContext) as GlobalContextType;
 
     const googleLoginHandler = async (credentials: CredentialResponse): Promise<void> => {
         changeLoading(true)
 
-        const response = await signin(credentials)
-        console.log(response);
+        const res: loginResponse = await signin(credentials)
+        console.log(res);
 
-        if (!response.error && response.token && response.user) {
+        if (res.token && res.user && res.logs && res.config) {
             //: saludar
-            createToast(response.message, { timeout: 3000, type: 'dark' })
+            createToast(res.message, { timeout: 3000, type: 'dark' })
             //: guardar token
-            setCookie('token', response.token, 7)
+            setCookie('token', res.token, 7)
             //: cargar datos en estado global
-            saveUser(response.user)
+            saveUser((res.user as User))
+            saveConfig(res.config)
+            saveLogs(res.logs)
             //: redirigir
             navigate('/app')
         } else {
-            createToast(response.message, { type: 'dark', cancel: 'ok' })
+            createToast(res.message, { type: 'dark', cancel: 'ok' })
         }
 
         changeLoading(false)

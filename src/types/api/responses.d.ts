@@ -1,10 +1,12 @@
-import { User } from "../context/context"
+import { Config, Logs, User } from "../context/context"
 
 export interface loginResponse {
     error: boolean;
     message: string;
     token?: string;
     user?: User;
+    config?: Config;
+    logs?: Logs;
 }
 
 export interface populatedUserResponse {
@@ -14,13 +16,14 @@ export interface populatedUserResponse {
 }
 
 export interface PopulatedUser {
+    _id: string
     name: string;
     config: Config;
     logs: Logs;
+    email: string;
+    picture?: string;
     username?: string;
     phone?: string;
-    email: string;
-    profile_picture?: string;
     google_id?: string;
     slack_id?: string;
     active: boolean;

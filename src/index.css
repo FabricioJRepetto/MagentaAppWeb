@@ -10,7 +10,7 @@
 
         color-scheme: light dark;
         color: rgba(255, 255, 255, 0.87);
-        background-color: #242424;
+        background-color: #101010;
 
         font-synthesis: none;
         text-rendering: optimizeLegibility;
@@ -97,6 +97,14 @@
 }
 
 @layer components {
+    .navbar-logo {
+        transition: filter 300ms;
+        filter: drop-shadow(0 0 1.25em var(--magenta));
+    }
+    .navbar-logo:hover {
+        filter: drop-shadow(.3em 0 .8em var(--magenta));
+    }
+
     .login-container {
         color-scheme: light;
     }
@@ -126,10 +134,11 @@
     .week-container-days span {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;        
     }
 
     .week-hours-column {
+        position: relative;
         width: 2.5rem;
         display: flex;
         flex-direction: column;
@@ -147,8 +156,29 @@
     }
 
     .day-column {
+        position: relative;
         height: 1200px;
         border-left: 1px rgb(47, 47, 47) solid;
+    }
+
+    .now-head {
+        position: absolute;
+        left: -4px;
+        height: 8px;
+        width: 8px;
+        margin-top: -3px;
+        border-radius: 100%;
+        background-color: var(--magenta);
+        z-index: 20;
+    }
+
+    .now-dial {
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background-color: var(--magenta);
+        z-index: 20;
     }
     
 }
