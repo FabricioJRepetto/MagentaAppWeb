@@ -7,6 +7,7 @@ import { weekDayDate } from "../../../../utils/weekDayDate";
 import findDayLogs from "../../../../utils/findDayLogs";
 import timeToHeight from "../../../../utils/timeToHeight";
 import timeToNumber from "../../../../utils/timeToNumber";
+import now from "../../../../utils/now";
 
 
 const Week = ({ date }: { date: string }) => {
@@ -57,9 +58,8 @@ const Week = ({ date }: { date: string }) => {
         return days
     }
 
-    const now = new Date().toLocaleString().split(' ')[1]
     const style = {
-        top: timeToHeight(timeToNumber(now))
+        top: timeToHeight(timeToNumber(now()))
     }
 
     return (

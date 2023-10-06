@@ -1,4 +1,5 @@
 import { Day } from '../../../../types/context/context'
+import now from '../../../../utils/now'
 import timeToHeight from '../../../../utils/timeToHeight'
 import timeToNumber from '../../../../utils/timeToNumber'
 import TaskCard from './TaskCard'
@@ -16,10 +17,8 @@ const DayColumn = ({ logs }: { logs: Day | null }) => {
         return false
     }
 
-    const now = new Date().toLocaleString().split(' ')[1]
-
     const style = {
-        top: timeToHeight(timeToNumber(now))
+        top: timeToHeight(timeToNumber(now()))
     }
 
     return (
