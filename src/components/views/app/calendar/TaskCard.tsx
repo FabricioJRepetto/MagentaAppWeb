@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Activity } from '../../../../types/context/context'
 import numberToTime from '../../../../utils/numberToTime';
 import timeToHeight from '../../../../utils/timeToHeight';

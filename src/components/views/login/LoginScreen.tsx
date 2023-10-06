@@ -6,7 +6,7 @@ import { signin } from '../../../infra/microservices/app-api';
 import { setCookie } from '../../../utils/cookies';
 import { createToast } from 'vercel-toast';
 import { useNavigate } from 'react-router-dom';
-import { loginResponse } from '../../../types/api/responses';
+// import { loginResponse } from '../../../types/api/responses';
 
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -15,8 +15,9 @@ const LoginScreen = () => {
     const googleLoginHandler = async (credentials: CredentialResponse): Promise<void> => {
         changeLoading(true)
 
-        const res: loginResponse = await signin(credentials)
+        const res = await signin(credentials)
         console.log(res);
+        if (!res) return
 
         if (res.token && res.user && res.logs && res.config) {
             //: saludar
