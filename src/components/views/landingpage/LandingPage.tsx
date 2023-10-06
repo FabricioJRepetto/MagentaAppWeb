@@ -45,7 +45,7 @@ const LandingPage = () => {
             <b className='text-2xl'>Instrucciones!</b>
             <ul className='mb-8'>
                 <li>1 • Iniciar sesión con Google haciendo click en la opción 'Login' arriba a la derecha.</li>
-                <li>2 • Ir al canal de <b><a href='https://join.slack.com/t/magentaproduc-dqe3450/shared_invite/zt-22zcuxzs1-JVymFP7FG8NWmFktqpCrRw'>Slack</a></b> y utilizar el comando <b>/Registrarse</b> para vincular Slack a tu cuenta.</li>
+                <li>2 • Ir al canal de <b><a href='https://join.slack.com/t/magentaproduc-dqe3450/shared_invite/zt-22zcuxzs1-JVymFP7FG8NWmFktqpCrRw' target='_blank'>Slack</a></b> y utilizar el comando <b>/Registrarse</b> para vincular Slack a tu cuenta.</li>
                 <li>3 • En la <b>Home de la app</b> podés configurar las notificaciones (días, horas) que te va a mandar el bot para recordarte que registres actividades.</li>
                 <li>4 • En la <b>Home de la app</b> también podés registrar actividades.</li>
             </ul>
@@ -55,12 +55,12 @@ const LandingPage = () => {
                 <li>• De momento solo se pueden CREAR actividades (cuidado con los errores).</li>
             </ul>
 
-            <div className='flex gap-2 justify-center'>
-                {/* <button onClick={testNotification1}> toast 1 </button> */}
-                {/* <button onClick={testNotification2}> toast 2 </button> */}
-                {/* <button onClick={testNotification3}> toast error </button> */}
-                {/* <button onClick={destroyAllToasts}> clear toasts </button> */}
-            </div>
+            {/* <div className='flex gap-2 justify-center'>
+                <button onClick={testNotification1}> toast 1 </button>
+                <button onClick={testNotification2}> toast 2 </button>
+                <button onClick={testNotification3}> toast error </button>
+                <button onClick={destroyAllToasts}> clear toasts </button>
+            </div> */}
         </div>
     )
 }

@@ -5,17 +5,11 @@ const AppHome = () => {
 
     return (
         <>
-            <h1>User App Home View</h1>
+            <h1>Dashboard Home View</h1>
+            <h1>WIP</h1>
+            <b className='text-2xl my-8'><a href='https://join.slack.com/t/magentaproduc-dqe3450/shared_invite/zt-22zcuxzs1-JVymFP7FG8NWmFktqpCrRw' target='_blank'>Slack</a></b>
 
-            <p className="read-the-docs">
-                Datos rapidos? Guias? Concejos?
-            </p>
-            <p className="read-the-docs">
-                El bot de Slack
-            </p>
-
-            <div className="flex gap-2">
-                <button className="w-40" onClick={() => navigate('/app/user')}>Perfil</button>
+            <div className="flex justify-center gap-2">
                 <button className="w-40" onClick={() => navigate('/app/calendar')}>Calendario</button>
                 <button className="w-40" onClick={() => navigate('/app/charts')}>Estadisticas</button>
             </div>
